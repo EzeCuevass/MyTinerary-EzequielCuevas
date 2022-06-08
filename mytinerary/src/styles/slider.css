@@ -16,9 +16,10 @@ body {
 
 .swiper {
   width: 100%;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  height: 60vh;
+  margin-left: 2.5vw;
+  margin-right: 2.5vw;
+  margin-top: 5vh;
 }
 
 .swiper-slide {
@@ -40,4 +41,7 @@ body {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+}
+.child-Slide{
+  width: 45vw !important;
 }

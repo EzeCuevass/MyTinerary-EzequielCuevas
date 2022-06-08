@@ -15,7 +15,7 @@ export default function Slider() {
   return (
     <>
       <Swiper
-        slidesPerView={3}
+        slidesPerView={2}
         grid={{
           rows: 2,
         }}
@@ -26,15 +26,18 @@ export default function Slider() {
         modules={[Grid, Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 1</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 2</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 3</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 4</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 5</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 6</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 7</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 8</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 9</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 10</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 11</SwiperSlide>
+        <SwiperSlide className="child-Slide">Slide 12</SwiperSlide>
       </Swiper>
     </>
   );
