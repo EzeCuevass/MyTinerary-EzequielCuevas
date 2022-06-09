@@ -3,5 +3,8 @@
     color: white;
 }
 .Texts{
-    margin: 1vh;
+    padding-top: 1px;
+}
+.copyright{
+    padding-bottom: 1vh;
 }

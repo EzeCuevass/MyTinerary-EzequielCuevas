@@ -11,10 +11,11 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import Logo from "../images/MyTinerary.png";
+import "../styles/navbar.css"
+import {Link as LinkRouter} from "react-router-dom"
 
-const pages = ['Home', 'Cities'];
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
@@ -72,11 +73,16 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              <LinkRouter to="/">
+                <MenuItem  onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Home</Typography>
                 </MenuItem>
-              ))}
+              </LinkRouter>
+              <LinkRouter to="/cities">
+                <MenuItem  onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Cities</Typography>
+                </MenuItem>
+              </LinkRouter>
             </Menu>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 , width:"100vw", justifyContent:"center"}}>
@@ -84,15 +90,23 @@ const Navbar = () => {
           </Box>
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            <LinkRouter to="/">
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                Home
               </Button>
-            ))}
+            </LinkRouter>
+              <LinkRouter to="/cities">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Cities
+              </Button>
+              </LinkRouter>
+            
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

@@ -15,11 +15,9 @@ body {
 }
 
 .swiper {
-  width: 100%;
+  width: 90%;
   height: 60vh;
-  margin-left: 2.5vw;
-  margin-right: 2.5vw;
-  margin-top: 5vh;
+  padding: 4.9vw;
 }
 
 .swiper-slide {
@@ -42,6 +40,13 @@ body {
   -webkit-align-items: center;
   align-items: center;
 }
-.child-Slide{
-  width: 45vw !important;
+
+.beaches-text{
+  background-color: #eba834;
+  color: white;
+}
+.background-swiper{
+  background-image: url("https://www.innaturale.com/es/wp-content/uploads/2021/09/Color-de-la-arena.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }

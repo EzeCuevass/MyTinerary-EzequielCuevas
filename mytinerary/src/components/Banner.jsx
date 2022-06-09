@@ -5,7 +5,7 @@ function Banner(){
     return (
         <div className="Banner">
             <h1>MyTinerary</h1>
-            <h2>Find your place in the world!</h2>
+            <h2>Find your perfect trip, designed by insiders who know and love their cities!</h2>
         </div>
     )
 }
