@@ -37,7 +37,7 @@ export default function Slider() {
         { data.map(destinos =>{ 
             return(
             <SwiperSlide className= "mySwiper" key={destinos.id} style={{backgroundImage:`url("${destinos.image}")`, backgroundSize:"cover", backgroundPosition:"center"}}> 
-              <div className="beaches">
+              <div>
                 <p className="beaches-text">{destinos.name}</p>
                 <p className="beaches-text">{destinos.city}</p>
               </div>
