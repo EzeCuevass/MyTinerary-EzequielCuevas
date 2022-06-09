@@ -7,6 +7,7 @@ import "swiper/css/grid";
 import "swiper/css/pagination";
 import data from "../data.json"
 import "../styles/slider.css";
+import "swiper/css/navigation"
 
 // import required modules
 import { Autoplay, Navigation, Grid, Pagination } from "swiper";
@@ -15,9 +16,14 @@ export default function Slider() {
   return (
     <>
       <div className="background-swiper">
+      <h1>Popular MYtineraries</h1>
       <Swiper
         slidesPerGroup={2}
         slidesPerView={2}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
         grid={{
           rows: 2,
         }}
@@ -25,7 +31,7 @@ export default function Slider() {
         pagination={{
           clickable: true,
         }}
-        modules={[Grid, Pagination]}
+        modules={[Grid, Pagination, Autoplay, Navigation]}
         className="mySwiper"
       >
         { data.map(destinos =>{ 

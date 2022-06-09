@@ -49,4 +49,9 @@ body {
   background-image: url("https://www.innaturale.com/es/wp-content/uploads/2021/09/Color-de-la-arena.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  padding-top: 1vh;
+}
+h1{
+  color: white;
+  padding-top: 2vh;
 }
