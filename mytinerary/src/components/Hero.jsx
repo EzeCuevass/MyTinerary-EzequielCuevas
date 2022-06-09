@@ -1,13 +1,11 @@
 import React from "react";
-import { Stack } from "@mui/material";
-import Button from "@mui/material";
 import "../styles/button.css"
-
+import {Link as LinkRouter} from "react-router-dom"
 function button(){
     return(
         <div className="button-background">
             <h3 className="text-hero">Click here to see our Cities</h3>
-            <button className="button-hero">CLICK HERE!</button>
+            <LinkRouter to={"/cities"}><button className="button-hero">CLICK HERE!</button></LinkRouter>
         </div>
     )
 }
