@@ -13,8 +13,7 @@ function Cities(){
         axios.get("http://localhost:4000/api/cities")
             .then(response => setCities(response.data.response.cities))
     }, [])
-    
-    var cityFilter = cities?.filter(city => city.name.toLowerCase().startsWith(inputValue.toLowerCase().trim()))
+    let cityFilter = cities?.filter(city => city.cityname.toLowerCase().startsWith(inputValue.toLowerCase().trim()))
     return (
         <>
         <div className="cities-first-box">
@@ -25,7 +24,6 @@ function Cities(){
             {cityFilter?.length> 0 ? (<CardCities cardFilter={cityFilter} />) : (<Error />)}
         </div>
         </>
-
     )
     
 }

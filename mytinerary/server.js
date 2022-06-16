@@ -1,6 +1,8 @@
 require("dotenv").config()
 require("./config/database")
 const express = require("express")
+const cors = require("cors")
+const axios = require("axios")
 const Router = require("./routes/routes")
 const app = express()
 const PORT = 4000
@@ -11,6 +13,7 @@ app.set("port", PORT)
 app.get("/", (req, res) => {
     res.send("<h1>Nkunku sos mi DIOS</h1>")
 })
+app.use(cors())
 app.use(express.json())
 app.use("/api", Router)
 // Escucha al puerto, y manda un mensaje en la consola indicanto el puerto en el que se esta trabajando
