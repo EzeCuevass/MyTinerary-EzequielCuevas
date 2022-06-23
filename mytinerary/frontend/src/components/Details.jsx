@@ -5,17 +5,19 @@ import axios from "axios"
 import { useEffect } from "react";
 import { Link as LinkRouter } from "react-router-dom" 
 import "../styles/details.css"
+import citiesActions from "../redux/actions/citiesActions";
+import {useDispatch, useSelector} from "react-redux" 
 
 
 function Details(){
     const{id}=useParams()
     const [card, setCard] = useState([])
-
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/cities/${id}`)
-        .then(response => setCard(response.data.response.city)         
-            )
+        // axios.get(`http://localhost:4000/api/cities/${id}`)
+        // .then(response => setCard(response.data.response.city)  
+            dispatch(citiesActions.getOneCity(id))
     }, [])
     return(
         <div className="body-details">
