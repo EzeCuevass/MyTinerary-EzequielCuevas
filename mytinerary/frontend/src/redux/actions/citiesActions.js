@@ -13,10 +13,10 @@ const citiesActions = {
             dispatch({type: "GETONECITY", payload: res.data.response.city})
         }
     },
-    filterCities: (filterCity)=>{
+    filterCities: (inputValue)=>{
         return async (dispatch, getState) => {
             const res = await axios.get("http://localhost:4000/api/cities")
-            dispatch({type: "FILTERCITY", payload:filterCity})
+            dispatch({type: "FILTERCITY", payload:inputValue})
         }
     }
 }

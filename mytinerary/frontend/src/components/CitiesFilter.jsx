@@ -15,9 +15,11 @@ function Cities(){
         // axios.get("http://localhost:4000/api/cities")
         //     .then(response => setCities(response.data.response.cities))
         dispatch(citiesActions.getCities())
-    }, [])
+        dispatch(citiesActions.filterCities(inputValue))
+    }, [inputValue])
     const citiesRedux = useSelector(store=>store.citiesReducer.cities)
     const citiesfilter = useSelector(store=>store.citiesReducer.filterCity)
+    console.log(citiesfilter);
     // let cityFilter = cities?.filter(city => city.cityname.toLowerCase().startsWith(inputValue.toLowerCase().trim()))
     return (
         <>
@@ -26,7 +28,7 @@ function Cities(){
             <TextField id="outlined-basic" label="Search" variant="outlined" onKeyUp={(event) => setInputValue(event.target.value)}/>
         </div>
         <div className="cities-container">
-            {citiesRedux?.length> 0 ? (<CardCities cardFilter={citiesRedux} />) : (<Error />)}
+            {citiesfilter?.length> 0 ? (<CardCities cardFilter={citiesfilter} />) : (<Error />)}
         </div>
         </>
     )
