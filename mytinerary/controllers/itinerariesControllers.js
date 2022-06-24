@@ -21,7 +21,7 @@ const itinerariesControllers = {
         let itinerary
         let error = null
         try{
-            city = await Itineraries.findOne({_id:id})
+            itinerary = await Itineraries.findOne({_id:id})
         }catch (err){
             error = err
         }
@@ -78,6 +78,20 @@ const itinerariesControllers = {
         }catch(err){error=err}
         res.json({
             response: error ? "Error" : itinerary,
+            success: error ? false : true,
+            error: error
+        })
+    },
+    findTinFromCity: async (req,res) => {
+        let cityid = req.params.id
+        let itineraries
+        let error = null
+        try{
+            itineraries = await Itineraries.find({ cities:cityid })
+            .populate("cities")
+        }catch (err) { error = err }
+        res.json({
+            response : error ? 'ERROR' : { itineraries },
             success: error ? false : true,
             error: error
         })

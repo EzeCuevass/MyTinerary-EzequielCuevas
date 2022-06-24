@@ -1,7 +1,8 @@
 const initialState = {
     cities : [],
     auxiliar : [],
-    filterCity: []
+    filterCity: [],
+    city: []
 }
 
 const citiesReducer = (state = initialState, action) => {
@@ -14,7 +15,7 @@ const citiesReducer = (state = initialState, action) => {
         case "GETONECITY":
             return{
                 ...state,
-                cities: action.payload,
+                city: action.payload,
                 auxiliar: action.payload
             }
         case "FILTERCITY":

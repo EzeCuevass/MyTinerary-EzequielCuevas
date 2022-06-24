@@ -6,21 +6,16 @@ import TextField from '@mui/material/TextField';
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux" 
 import citiesActions from "../redux/actions/citiesActions"
-
+import "../styles/citiesfilter.css"
 function Cities(){
-    const [inputValue, setInputValue] = useState("")
-    // const [cities, setCities] = useState()
-    const dispatch = useDispatch()
+    const [inputValue, setInputValue] = useState("") 
+    const dispatch = useDispatch() 
     useEffect(()=>{
-        // axios.get("http://localhost:4000/api/cities")
-        //     .then(response => setCities(response.data.response.cities))
         dispatch(citiesActions.getCities())
         dispatch(citiesActions.filterCities(inputValue))
     }, [inputValue])
-    const citiesRedux = useSelector(store=>store.citiesReducer.cities)
-    const citiesfilter = useSelector(store=>store.citiesReducer.filterCity)
+    const citiesfilter = useSelector(store=>store.citiesReducer.filterCity) 
     console.log(citiesfilter);
-    // let cityFilter = cities?.filter(city => city.cityname.toLowerCase().startsWith(inputValue.toLowerCase().trim()))
     return (
         <>
         <div className="cities-first-box">

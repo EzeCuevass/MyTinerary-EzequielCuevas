@@ -7,19 +7,20 @@ import { Link as LinkRouter } from "react-router-dom"
 import "../styles/details.css"
 import citiesActions from "../redux/actions/citiesActions";
 import {useDispatch, useSelector} from "react-redux" 
-
+import itinerariesActions from "../redux/actions/itinerariesActions"
+import Itineraries from "./Itineraries";
 
 function Details(){
+    const [inputValue, setInputValue] = useState("")
     const{id}=useParams()
-    const [card, setCard] = useState([])
+    // const [card, setCard] = useState([])
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        // axios.get(`http://localhost:4000/api/cities/${id}`)
-        // .then(response => setCard(response.data.response.city)  
+    useEffect(() => { 
             dispatch(citiesActions.getOneCity(id))
     }, [])
+    const card = useSelector(store=>store.citiesReducer.city)
     return(
+        <>
         <div className="body-details">
             <div className="card-container">
                 <div className="card">
@@ -36,6 +37,8 @@ function Details(){
                 </div>
             </div>
         </div>
+        <Itineraries/>
+        </>
     );
 };
 export default Details
