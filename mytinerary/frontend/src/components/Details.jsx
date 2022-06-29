@@ -31,7 +31,7 @@ function Details(){
                         <h2>{card.cityname}</h2>
                         <h3>{card.country}</h3>
                         <LinkRouter to={"/cities"}>
-                            <button>Go Back!</button>
+                            <button className="button-details">Go Back!</button>
                         </LinkRouter>
                     </div>
                 </div>

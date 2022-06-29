@@ -8,7 +8,9 @@ function CardCities({cardFilter}){
         {cardFilter.map(city => (
             <div className='cards' key={city._id}>
                 <div className='image'>
-                    <img src = {city.photo}  alt="cities" className='image-card'/>
+                    <LinkRouter to={`citydetails/${city._id}`}>
+                        <img src = {city.photo}  alt="cities" className='image-card'/>
+                    </LinkRouter>
                 </div>
                 <div className='body-card'>
                     <h3>{city.cityname}</h3>

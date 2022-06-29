@@ -19,10 +19,14 @@
     align-items: center;
     justify-content: center;
 }
-.photo-itinerary{
-    min-height: 13vw;
+.box-photo{
     width: 14vw;
-    margin-top: 1.5vh;
+    height: 27vh;
+    margin-top: 1vh;
+}
+.photo-itinerary{
+    width: 100%;
+    height: 100%;
 }
 .itinerary-box-two{
     display: flex;
@@ -65,10 +69,12 @@
     }
     .itinerary-box-three{
         flex-direction: row;
+        width: 100%;
+        flex-wrap: wrap;
     }
-    .photo-itinerary{
+    .box-photo{
         width: 50vw;
-        min-height: 27vh;
+        height: 30vh;
     }
 }
 .person-name{

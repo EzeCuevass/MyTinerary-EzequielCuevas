@@ -20,7 +20,9 @@ function Itineraries(){
                 itinerary.map(itinerary=>(
                 <div className="itinerary">
                     <div className="itinerary-box-one">
-                        <img src={itinerary.personPhoto} alt="photo" className="photo-itinerary"/>
+                        <div className="box-photo">
+                            <img src={itinerary.personPhoto} alt="photo" className="photo-itinerary"/>
+                        </div>
                         <div className="person-name">
                             <p>{itinerary.person}</p>
                         </div>

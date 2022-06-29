@@ -28,3 +28,14 @@
 .body-details{
     background-color: #4287f5;
 }
+.button-details{
+    background-color: #eba834;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    transition: 300ms ease-out;
+}
+.button-details:hover, .button-details:focus{
+    font-size: larger;
+}
