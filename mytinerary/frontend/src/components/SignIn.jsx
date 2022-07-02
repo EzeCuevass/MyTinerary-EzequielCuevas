@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import userActions from "../redux/actions/userActions"
+import { connect } from "react-redux"
+import TextField from '@mui/material/TextField';
 
 
-function SignIn(){
-const handleSubmit = async (event) => {
-    event.preventDefault()
-    console.log(event.target[3].value)
-    const logedUser = {
-        email: event.target[0].value,
-        password: event.target[1].value,
-        from: "form-Signup",
-    }
-    await props.signInUser(logedUser)
+function SignIn(props){
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        const logedUser = {
+            email: email,
+            password: password,
+            from: "form-Signin",
+        }
+        await props.signIn(logedUser)
 } 
     return(
-        <div>
-            <h1>aca iria el el sign up</h1>
-            <img src="https://statics.memondo.com/p/99/ccs/2016/11/CC_2625107_6387d6a30b874e648c2b5d04cdf75b59_meme_otros_solo_estan_locas_thumb_fb.jpg?cb=7720515" alt="imglol"/>
-            <p>si tan solo tuviera uno</p>
+        <div className="form-div">
+            <form onSubmit={handleSubmit}>
+                <TextField type="text" id="filled-basic email" label="Email" variant="filled" name="email" itemID="Email" value={email} onChange={e=>setEmail(e.target.value)} required/>
+                <TextField type="password" id="filled-basic password" label="Password" variant="filled" name="password" itemID="Password" value={password} onChange={e=>setPassword(e.target.value)} required/>
+                <button type="submit">Sign In</button>
+            </form>
         </div>
     )
 }
-export default SignIn
+const mapDispatchToProps = {
+    signIn: userActions.signIn
+}
+const mapStateToProps = (state) => {
+    return {
+        message: state.userReducer.message
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

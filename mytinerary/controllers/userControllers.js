@@ -1,28 +1,28 @@
-const User = require("../models/modelUser")
+const User = require("../models/modelUser.js")
 const bcryptjs = require("bcryptjs")
-
+const crypto = require("crypto")
 
 const userControllers = {
     signUpUsers: async (req, res) => {
-        let { fullname, email, password, from } = req.body.userData
+        let {fullname, email, password, country, photo, from} = req.body.userData
+        // console.log(req.body.userData)
         const test = req.body.test
         try {
-            const userExists = await User.findOne({emal})
+            const userExists = await User.findOne({ email })
             if (userExists){
                 if (userExists.from.indexOf(from) !== -1) {
                 res.json({
                     success: false,
-                    from: "signup",
+                    from: "form-Signup",
                     message: "You have done your sign up in this way, please sign in"
                 })
                 } else {
                     const hashedpass = bcryptjs.hashSync(password, 10)
-                    
                     userExists.from.push(from)
                     userExists.password.push(hashedpass)
                     res.json({
                         success: true, 
-                        from: "signup",
+                        from: "form-Signup",
                         message: "We added " + from + "to your medias to sign in"
                     })
                 }
@@ -32,11 +32,13 @@ const userControllers = {
                     fullname,
                     email,
                     password: [hashedpass],
+                    country,
+                    photo,
                     uniqueString: crypto.randomBytes(15).toString("hex"),
-                    emailverified: false,
+                    verification: false,
                     from: [from],
                 })
-                if (from !== "form-signup") {
+                if (from !== "form-Signup") {
                     await newUser.save()
                     res.json({
                         success: true,
@@ -48,7 +50,7 @@ const userControllers = {
                     res.json({
                         success: true,
                         from: "signup",
-                        message: "We sent you a validation email, please verify your email"
+                        message: "We sent you a validation email, please verify your email!"
                     })
                 }
             }
@@ -60,7 +62,7 @@ const userControllers = {
         const {email, password, from} = req.body.logedUser
         try{
             const userExists = await User.findOne({email})
-            const indexpass = userExists.from.indexOf(from)
+            // const indexpass = userExists.from.indexOf(from)
             if(!userExists){
                 res.json({success: false, message: "Your user has not signed up"})
             } else {
@@ -88,8 +90,9 @@ const userControllers = {
                         })
                     }
                 } else {
+                    let passmatch = userExists.password.filter(pass => bcryptjs.compareSync(password, pass))
                     if (passmatch.length > 0) {
-                        const userData = {
+                            const userData = {
                             id: userExists._id,
                             fullname: userExists.fullname,
                             email: userExists.email,
@@ -115,6 +118,6 @@ const userControllers = {
         } catch (error){
             res.json({success: false, message: "Something went wrong, try again in few minutes"})
         }
-    }
+    },
 }
 module.exports = userControllers

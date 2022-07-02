@@ -5,6 +5,10 @@ const {getCities, getOneCity, addCity, updateCity, removeCity} = citiesControlle
 const itinerariesControllers = require("../controllers/itinerariesControllers");
 const { signUpUsers, signInUser } = require("../controllers/userControllers");
 const {getItineraries, getOneItinerary, addItinerary, updateItinerary, removeItinerary, findTinFromCity} = itinerariesControllers
+const validator = require("../config/validator")
+
+
+
 Router.route("/cities")
 .get(getCities)
 .post(addCity)
