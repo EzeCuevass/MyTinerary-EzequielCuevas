@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import './styles/App.css';
 import Footer from './components/Footer';
@@ -8,9 +8,25 @@ import Cities from './components/Cities';
 import Details from './components/Details';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn'
+import Alerts from './components/Alerts';
+import  userActions  from "./redux/actions/userActions";
+import { useDispatch, useSelector } from 'react-redux';
+
+
 function App() {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    if(localStorage.getItem("token")!== null){
+      const token = localStorage.getItem("token")
+      dispatch(userActions.verifyToken(token))
+    }
+  },[])
+  const user = useSelector(store=>store.userReducer.user)
+  console.log(user); 
+
   return (
     <div className="App">
+      <Alerts />
       <Navbar />
       <Routes>
         <Route path='/index' element={<Main />} />
@@ -23,6 +39,7 @@ function App() {
         <Route path='/cities/citydetails/:id' element={<Details />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        {/* <Route path="/signout" element={<Main />} /> */}
       </Routes>
       <Footer />
     </div>

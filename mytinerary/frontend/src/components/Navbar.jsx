@@ -14,14 +14,20 @@ import MenuItem from '@mui/material/MenuItem';
 import Logo from "../images/MyTinerary.png";
 import "../styles/navbar.css"
 import {Link as LinkRouter} from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import SignOut from './SignOut';
 
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Sign Up', 'Sign In'];
+const signLinks = ["/signup", "/signin"]
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const dispatch = useDispatch()
+  
+  const user = useSelector(store=>store.userReducer.user)
+  console.log(user)
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -112,7 +118,10 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" />
+                {user==null?
+                <Avatar alt="Remy Sharp" />:
+                <Avatar alt="User image" src={user.photo}/>
+                }
               </IconButton>
             </Tooltip>
             <Menu
@@ -131,11 +140,34 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {/* {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
+              
+              
+              {user==null?
+              ( <>
+                <LinkRouter to="/signup">
+                  <MenuItem key="signUp" onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">Sign Up</Typography>
+                  </MenuItem>
+                </LinkRouter>
+                <LinkRouter to="/signin">
+                  <MenuItem key="signIn" onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">Sign In</Typography>
+                  </MenuItem>
+                </LinkRouter>
+                </>):
+                (
+                <>
+                  <MenuItem key="signOut" onClick={handleCloseUserMenu}>
+                    <SignOut />
+                  </MenuItem>
+                  </>
+                )
+              }
             </Menu>
           </Box>
         </Toolbar>

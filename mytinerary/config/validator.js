@@ -12,7 +12,7 @@ const validator = (req,res,next) => {
                 "string.email": '"mail": incorrect format'}),
         password: joi.string()
             .min(8)
-            .max(30)
+            .max(40)
             .pattern(new RegExp('[a-zA-Z0-9]'))
             .required()
             .messages({

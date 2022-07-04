@@ -3,20 +3,17 @@ import jwt_decode from "jwt-decode"
 import { useDispatch } from "react-redux"
 import userActions from '../redux/actions/userActions'
 
-function GoogleSignUp() {
+function GoogleSignIn() {
     const dispatch = useDispatch()
 
     async function handleCallback(res){
-        console.log(res);
+        // console.log(res);
         const userObject = jwt_decode(res.credential)
         console.log(userObject)
-        dispatch(userActions.signUp({
-            fullname: userObject.name,
+        dispatch(userActions.signIn({
             email: userObject.email,
             password: userObject.sub,
-            country: "Argentina",
-            photo: userObject.picture,
-            from: "Google Sign Up"
+            from: "Google Sign In"
         }))
     }
     useEffect(()=>{
@@ -36,4 +33,4 @@ function GoogleSignUp() {
         </div>
     )
 }
-export default GoogleSignUp
+export default GoogleSignIn
