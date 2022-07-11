@@ -22,7 +22,7 @@ function App() {
     }
   },[])
   const user = useSelector(store=>store.userReducer.user)
-  console.log(user); 
+  // console.log(user); 
 
   return (
     <div className="App">

@@ -51,11 +51,11 @@ const userActions = {
         }
     },
     verifyToken: (token) => {
-        console.log(token);
+        // console.log(token);
         return async (dispatch, getState) => {
             await axios.get("http://localhost:4000/api/auth/signInToken", {headers:{'Authorization': 'Bearer ' + token}})
             .then(user=>{if (user.data.success){
-                console.log(user);
+                // console.log(user);
                 dispatch({type:"USER",payload:user.data.response})
                 dispatch({type:"MESSAGE",
                             payload: {
@@ -63,7 +63,7 @@ const userActions = {
                                 message:user.data.message,
                                 success:user.data.success
                             }})
-                            console.log("lol");
+                            // console.log("lol");
             }else{localStorage.removeItem("token")
             console.log("lol2")}
         }

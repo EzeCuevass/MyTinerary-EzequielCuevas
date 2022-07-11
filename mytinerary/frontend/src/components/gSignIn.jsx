@@ -29,7 +29,7 @@ function GoogleSignIn() {
     })
     return(
         <div>
-            <div classname="buttons" id='gButton'></div>
+            <div className="buttons" id='gButton'></div>
         </div>
     )
 }

@@ -162,13 +162,6 @@ const userControllers = {
             res.json({success:false,
                         message: "Please sign in again"})
         }
-    },
-    signOutUser:async (req, res) => {
-        const email = req.body.userData
-        const user = await User.findOne({email})
-        console.log(user);
-        // await user.save() 
-        res.json(console.log(email+' sign out!'))
-    },
+    }
 }
 module.exports = userControllers

@@ -61,7 +61,7 @@ const itinerariesControllers = {
         let itinerarydb
         let error = null
         try{
-            citydb = await Itineraries.findOneAndUpdate({_id:id}, itinerary, {new:true})
+            itinerarydb = await Itineraries.findOneAndUpdate({_id:id}, itinerary, {new:true})
         }catch (err){error=err}
         res.json({
             response: error ? "Error" : itinerarydb,
@@ -80,7 +80,7 @@ const itinerariesControllers = {
             response: error ? "Error" : itinerary,
             success: error ? false : true,
             error: error
-        })
+        }) 
     },
     findTinFromCity: async (req,res) => {
         let cityid = req.params.id
@@ -89,12 +89,41 @@ const itinerariesControllers = {
         try{
             itineraries = await Itineraries.find({ cities:cityid })
             .populate("cities")
-        }catch (err) { error = err }
+            .populate("activities")
+        }catch (err) { error = err } 
         res.json({
             response : error ? 'ERROR' : { itineraries },
             success: error ? false : true,
             error: error
         })
-    }
+    },
+    like: async (req, res) => {
+        let id = req.params.id
+        let user = req.user.id
+        await Itineraries.findOne({_id:id})
+        .then( (itinerary) => {
+            if (itinerary.likes.includes(user)) {
+                Itineraries.findOneAndUpdate({_id:id}, {$pull:{likes:user}}, {new:true})
+                .then(response => res.json({
+                    response: response.likes,
+                    success: true
+                }))
+                .catch(error => console.log(error))
+            } else {
+                Itineraries.findOneAndUpdate({_id:id}, {$push:{likes:user}}, {new:true})
+                .then(response => res.json({
+                    response: response.likes,
+                    succes: true
+                }))
+                .catch(error => console.log(error))
+            } 
+        }).catch ((error) =>
+            res.json({
+                response: error,
+                success: false
+            })
+        )
+    },
+    
 }
 module.exports = itinerariesControllers

@@ -12,7 +12,7 @@ import Itineraries from "./Itineraries";
 
 function Details(){
     const [inputValue, setInputValue] = useState("")
-    const{id}=useParams()
+    const {id} = useParams()
     // const [card, setCard] = useState([])
     const dispatch = useDispatch()
     useEffect(() => { 
@@ -37,7 +37,7 @@ function Details(){
                 </div>
             </div>
         </div>
-        <Itineraries/>
+        <Itineraries cityid={id}/>
         </>
     );
 };

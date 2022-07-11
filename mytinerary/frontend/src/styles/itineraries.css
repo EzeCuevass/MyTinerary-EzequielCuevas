@@ -9,6 +9,10 @@
     border: 1px solid black;
     border-radius: 10px;
     align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 .itinerary-box-one{
     height: 100%;
@@ -33,11 +37,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 60%;
     color: white;
 }
 .itinerary-box-three{
-    width: 10vw;
+    width: 11vw;
     display: flex;
     justify-content: center;
     /* align-items: center; */
@@ -47,7 +51,7 @@
     /* background-color: #80acf2; */
     background-color: #8bb5fc;
     border-radius: 5px;
-    margin-right: 3vh;
+    /* margin-right: 3vh; */
     box-shadow: 7px 7px 24px -3px rgba(0,0,0,0.42);
     -webkit-box-shadow: 7px 7px 24px -3px rgba(0,0,0,0.42);
     -moz-box-shadow: 7px 7px 24px -3px rgba(0,0,0,0.42);
@@ -72,6 +76,9 @@
         width: 100%;
         flex-wrap: wrap;
     }
+    .hashtag-css{
+        margin: 1vw;
+    }
     .box-photo{
         width: 50vw;
         height: 30vh;
@@ -79,4 +86,13 @@
 }
 .person-name{
     color: white;
+}
+.likeButton{
+    cursor: pointer;
+}
+.itinerary-box-four{
+    width: 60%;
+    color: white;
+    display: flex;
+    justify-content: center;
 }

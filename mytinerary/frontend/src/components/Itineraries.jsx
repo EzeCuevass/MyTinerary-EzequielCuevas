@@ -1,47 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import itinerariesActions from "../redux/actions/itinerariesActions";
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
-import "../styles/itineraries.css"
-let emoji = "💵"
 
-function Itineraries(){
-    const {id}= useParams()
+import "../styles/itineraries.css"
+
+import "../styles/activities.css"
+import CardItineararies from "./CardItineraries";
+
+
+
+
+
+function Itineraries({cityid}){    
     const dispatch = useDispatch()
+
+    const itinerary = useSelector(store=>store.itinerariesReducer.itinerary)
+    let {id} = useParams()    
+    // console.log(itinerary);
+    // user && 
+    // console.log(user.id);
     useEffect(()=>{
         dispatch(itinerariesActions.findTinFromCity(id))
     },[])
-    const itinerary = useSelector(store=>store.itinerariesReducer.itinerary)
-    console.log(itinerary)
-    const tags = itinerary.hashtags
+    
+    
     return(
             <div className="itineraries-container">
                 {itinerary.length>0?
                 itinerary.map(itinerary=>(
-                <div className="itinerary">
-                    <div className="itinerary-box-one">
-                        <div className="box-photo">
-                            <img src={itinerary.personPhoto} alt="photo" className="photo-itinerary"/>
-                        </div>
-                        <div className="person-name">
-                            <p>{itinerary.person}</p>
-                        </div>
-                    </div>
-                    <div className="itinerary-box-two">
-                        <div className="itinerary-body">
-                            <h3>{itinerary.itineraryName}</h3>
-                            <p>{emoji.repeat(itinerary.price)}</p>
-                            <p>{itinerary.duration}</p>
-                            <p>{itinerary.likes} 👍 Likes</p>
-                        </div>
-                    </div>
-                    <div className="itinerary-box-three">
-                        {/* <p>{itinerary.hashtags}</p> */}
-                        {itinerary.hashtags.map(hashtags=>(
-                            <p className="hashtag-css">{hashtags}</p>
-                        ))}
-                    </div>
-                </div>
+                <CardItineararies itinerary={itinerary} cityid={cityid} key={itinerary._id} />
             )): <div className="error-message">
                     <p className="noitineraries">No itineraries available</p>
                 </div>

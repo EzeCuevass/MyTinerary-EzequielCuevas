@@ -7,8 +7,15 @@ const itinerariesSchema = new mongoose.Schema({
     price: {type:Number, required:true},
     duration: {type:String, required:true},
     hashtags: {type:Array, required:true},
-    likes: {type:Number, required:true},
-    cities: {type: mongoose.Types.ObjectId, ref: "cities"}
+    likes: {type:Array, required:true},
+    cities: {type: mongoose.Types.ObjectId, ref: "cities"},
+    comments: [{
+        comment: {type:String},
+        iduser: {type:mongoose.Types.ObjectId, ref:"users"},
+        date: {type:Date}
+    } 
+    ],
+    activities: [{type: mongoose.Types.ObjectId, ref: "activities", required:true}],
 })
 const Itineraries = mongoose.model("itineraries", itinerariesSchema)
 module.exports = Itineraries 

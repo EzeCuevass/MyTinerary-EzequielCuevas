@@ -27,7 +27,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
   
   const user = useSelector(store=>store.userReducer.user)
-  console.log(user)
+  // console.log(user)
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -159,7 +159,8 @@ const Navbar = () => {
                     <Typography textAlign="center">Sign In</Typography>
                   </MenuItem>
                 </LinkRouter>
-                </>):
+                </>
+                ):
                 (
                 <>
                   <MenuItem key="signOut" onClick={handleCloseUserMenu}>
